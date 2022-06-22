@@ -23,9 +23,9 @@ class ZipCodeController extends Controller
     $settlements = [];
     foreach ($codes as  $st) {
       $arr = [
-        "key" => $st->d_asenta_cpcons,
-        "name" => $st->d_asenta,
-        "zone_type" => $st->d_zona,
+        "key" => intval($st->d_asenta_cpcons),
+        "name" => strtoupper($st->d_asenta),
+        "zone_type" => strtoupper($st->d_zona),
         "settlement_type" => [
           "name" => $st->d_tipo_asenta
         ]
@@ -35,16 +35,16 @@ class ZipCodeController extends Controller
 
     $arreglo = [
       "zip_code" => $id,
-      "locality" => $codes[0]['d_ciudad'],
+      "locality" => strtoupper($codes[0]['d_ciudad']),
       "federal_entity" =>  [
-        "key" =>  $codes[0]['c_estado'],
-        "name" =>  $codes[0]['d_estado'],
+        "key" =>  intval($codes[0]['c_estado']),
+        "name" =>  strtoupper($codes[0]['d_estado']),
         "code" =>  null
       ],
       'settlements' => $settlements,
       "municipality" => [
-        "key" => $codes[0]['c_mnpio'],
-        "name" => $codes[0]['d_mnpio']
+        "key" => intval($codes[0]['c_mnpio']),
+        "name" => strtoupper($codes[0]['d_mnpio'])
       ]
     ];
 
