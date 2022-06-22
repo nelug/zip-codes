@@ -48,6 +48,6 @@ class ZipCodeController extends Controller
       ]
     ];
 
-    return $arreglo;
+    return  response( json_encode($arreglo), 200);
   }
 }
